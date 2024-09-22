@@ -4,7 +4,7 @@ import Container from './components/Container/Container'
 import { formSchema } from './utils'
 import Form from './components/Form/Form'
 
-function App() {
+export function App() {
   const [formData, setFormData] = useState({
     cardNumber: '',
     cardName: '',
