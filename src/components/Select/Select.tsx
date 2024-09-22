@@ -13,7 +13,7 @@ function Select({
   defaultValue,
 }: SelectProps) {
   return (
-    <div className={styles.inputContainer}>
+    <div className={`${styles.inputContainer} ${selectStyle.select}`}>
       {label && displayLabel && (
         <label htmlFor={name} className={styles.label}>
           {label}
