@@ -27,10 +27,11 @@ function App() {
       })
       setFormErrors(errors)
       console.log('errors', errors)
+      alert(JSON.stringify(errors))
     } else {
       setFormErrors({})
       setFormData(result.data)
-      console.log('Form submitted: ', result.data)
+      alert(JSON.stringify(result.data))
     }
   }
 
