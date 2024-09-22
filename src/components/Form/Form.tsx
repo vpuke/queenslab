@@ -4,7 +4,7 @@ import { FormProps } from './interace'
 import Input from '../Input/Input'
 import Select from '../Select/Select'
 
-function Form({
+export function Form({
   onSubmit,
   errors,
   formData,
@@ -105,5 +105,3 @@ function Form({
     </form>
   )
 }
-
-export default Form

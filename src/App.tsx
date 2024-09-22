@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Card from './components/Card/Card'
-import Container from './components/Container/Container'
+import { Card } from './components/Card/Card'
+import { Container } from './components/Container/Container'
 import { formSchema } from './utils'
-import Form from './components/Form/Form'
+import { Form } from './components/Form/Form'
 
 export function App() {
   const [formData, setFormData] = useState({
@@ -27,11 +27,10 @@ export function App() {
       })
       setFormErrors(errors)
       console.log('errors', errors)
-      alert(JSON.stringify(errors))
     } else {
       setFormErrors({})
       setFormData(result.data)
-      alert(JSON.stringify(result.data))
+      console.log(result.data)
     }
   }
 

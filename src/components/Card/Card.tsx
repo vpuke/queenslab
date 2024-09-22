@@ -2,7 +2,7 @@ import { getCardType } from '../../helpers'
 import styles from './Card.module.css'
 import { CardProps } from './interface'
 
-function Card({ formData, isFlipped }: CardProps) {
+export function Card({ formData, isFlipped }: CardProps) {
   function formatCardNumber(number: string): string {
     return number.replace(/(\d{4})(?=\d)/g, '$1 ')
   }
@@ -54,5 +54,3 @@ function Card({ formData, isFlipped }: CardProps) {
     </div>
   )
 }
-
-export default Card
