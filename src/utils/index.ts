@@ -53,13 +53,14 @@ export function luhnCheck(cardNumber: string): boolean {
   return sum % 10 === 0
 }
 
-function expirationDateCheck(month: string, year: string): boolean {
+export function expirationDateCheck(month: string, year: string): boolean {
   const currentYear = new Date().getFullYear()
   const currentMonth = new Date().getMonth() + 1
   const inputYear = parseInt(year)
   const inputMonth = parseInt(month)
 
   if (inputYear < currentYear) return false
+  if (inputMonth < 1 || inputMonth > 12) return false
   if (inputYear === currentYear && inputMonth < currentMonth) return false
 
   return true
