@@ -1,0 +1,26 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.input {
+  padding: 12px;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.errorContainer {
+  height: 20px;
+  .error {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.label {
+  font-size: 14px;
+}
