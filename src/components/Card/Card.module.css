@@ -1,0 +1,121 @@
+.card {
+  width: 340px;
+  height: 200px;
+  perspective: 1000px;
+  position: relative;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cardFront,
+.cardBack {
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: black;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: url(../../assets/card.jpg);
+}
+
+.card.flipped .cardFront {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .cardBack {
+  transform: rotateY(0deg);
+}
+
+.cardFront {
+  transform: rotateY(0deg);
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.chip {
+  width: 40px;
+  height: 30px;
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+  border-radius: 4px;
+}
+
+.cardNumber {
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.cardName,
+.expiry {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  p:first-child {
+    font-size: 14px;
+    color: grey;
+  }
+  p {
+    margin: 0;
+    text-align: start;
+  }
+}
+
+.cardDetails {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expiry {
+  text-align: right;
+}
+
+.strip {
+  height: 40px;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.cvvContainer {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+.cvvLabel {
+  margin-right: 10px;
+}
+
+.cvvValue {
+  font-size: 16px;
+}
+
+.icon {
+  position: absolute;
+  right: 20px;
+}
