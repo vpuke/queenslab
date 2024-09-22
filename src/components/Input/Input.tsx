@@ -18,7 +18,6 @@ function Input({
       <input
         className={styles.input}
         id={name}
-        title='Only numbers'
         name={name}
         type='text'
         value={value}
