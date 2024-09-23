@@ -1,6 +1,6 @@
-<div style='display: flex; justify-content: center; margin-bottom: 20px;'>
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/l0MYt5jPR6QX5pnqM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
-</div>
+<a href="https://giphy.com/gifs/l0MYt5jPR6QX5pnqM">
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="My Giphy" style="width: 100%; height: auto;" />
+</a>
 
 # Queenslab assignment
 
