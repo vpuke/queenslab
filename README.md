@@ -51,4 +51,7 @@ npm run cy:open-e2e
 ### Lessons learned.
 
 Probably should have used `React-hook-form` or some other library to handle the forms.
-Right now it validates on submit, which also works, but if I were to work on this project any further I would utilize onBlur validation.
+<br/>
+~~Right now it validates on submit, which also works, but if I were to work on this project any further I would utilize onBlur validation.~~
+<br/>
+It bothered me.
