@@ -16,13 +16,7 @@ export const formSchema = z
       .regex(/^(0[1-9]|1[0-2])$/, { message: 'Invalid month' }),
     cardYear: z
       .string()
-      .regex(/^(202[3-4]|202[0-9])$/, { message: 'Invalid year' })
-      .refine(
-        (value) => value === '' || parseInt(value) >= new Date().getFullYear(),
-        {
-          message: 'Year cannot be in the past',
-        }
-      ),
+      .regex(/^(202[3-4]|202[0-9])$/, { message: 'Invalid year' }),
     cardCVV: z
       .string()
       .min(3, { message: 'CVV must be 3 or 4 digits' })
