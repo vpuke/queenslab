@@ -3,6 +3,7 @@ import { Card } from './components/Card/Card'
 import { Container } from './components/Container/Container'
 import { formSchema } from './utils'
 import { Form } from './components/Form/Form'
+import toast from 'react-hot-toast'
 
 export function App() {
   const [formData, setFormData] = useState({
@@ -26,10 +27,12 @@ export function App() {
         errors[err.path[0]] = err.message
       })
       setFormErrors(errors)
+      toast.error('Submition failed, try again')
       console.log('errors', errors)
     } else {
       setFormErrors({})
       setFormData(result.data)
+      toast.success('Submition successful!')
       console.log(result.data)
     }
   }
