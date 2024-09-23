@@ -3,6 +3,7 @@ import styles from './Form.module.css'
 import { FormProps } from './interace'
 import Input from '../Input/Input'
 import Select from '../Select/Select'
+import { formatCardNumber, monthOptions, yearOptions } from '../../utils'
 
 export function Form({
   onSubmit,
@@ -15,7 +16,7 @@ export function Form({
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
     const { name, value } = e.target
-    if (name === 'cardNumber' && value.length > 16) {
+    if (name === 'cardNumber' && value.length > 19) {
       return
     } else if (name === 'cardCVV' && value.length > 4) {
       return
@@ -40,22 +41,14 @@ export function Form({
     setIsFlipped(false)
   }
 
-  const monthOptions = [...Array(12).keys()].map((month) => ({
-    value: (month + 1).toString().padStart(2, '0'),
-    label: (month + 1).toString().padStart(2, '0'),
-  }))
-
-  const yearOptions = [2024, 2025, 2026, 2027].map((year) => ({
-    value: year.toString(),
-    label: year.toString(),
-  }))
+  const cardNumberValue = formatCardNumber(formData.cardNumber)
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <Input
         label='Card Number'
         name='cardNumber'
-        value={formData.cardNumber}
+        value={cardNumberValue}
         onChange={handleInputChange}
         error={errors.cardNumber}
       />
