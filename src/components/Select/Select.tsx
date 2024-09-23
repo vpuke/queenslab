@@ -24,6 +24,7 @@ function Select({
         id={name}
         name={name}
         value={value}
+        data-cy={`select-${name}`}
         onChange={onChange}
       >
         <option value='' disabled hidden>
@@ -36,7 +37,11 @@ function Select({
         ))}
       </select>
       <div className={styles.errorContainer}>
-        {error && <p className={styles.error}>{error}</p>}
+        {error && (
+          <p data-cy={`error-${name}`} className={styles.error}>
+            {error}
+          </p>
+        )}
       </div>
     </div>
   )

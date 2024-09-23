@@ -99,7 +99,7 @@ export function Form({
           handleFocusCVV={handleFocusCVV}
         />
       </div>
-      <button type='submit' className={styles.submitButton}>
+      <button data-cy='submit' type='submit' className={styles.submitButton}>
         Submit
       </button>
     </form>

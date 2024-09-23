@@ -18,6 +18,7 @@ function Input({
       <input
         className={styles.input}
         id={name}
+        data-cy={`input-${name}`}
         name={name}
         type='text'
         value={value}
@@ -26,7 +27,11 @@ function Input({
         onFocus={handleFocusCVV}
       />
       <div className={styles.errorContainer}>
-        {error && <p className={styles.error}>{error}</p>}
+        {error && (
+          <p data-cy={`error-${name}`} className={styles.error}>
+            {error}
+          </p>
+        )}
       </div>
     </div>
   )

@@ -22,7 +22,10 @@ export function Card({ formData, isFlipped }: CardProps) {
   const cardNumber = formData.cardNumber
 
   return (
-    <div className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}>
+    <div
+      data-cy={'cardContainer'}
+      className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}
+    >
       <div className={styles.cardFront}>
         <div className={styles.icon}>{getCardType(cardNumber)}</div>
         <div className={styles.chip} />
