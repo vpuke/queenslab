@@ -1,16 +1,9 @@
 import { getCardType } from '../../helpers'
+import { formatCardNumber, removeCentury } from '../../utils'
 import styles from './Card.module.css'
 import { CardProps } from './interface'
 
 export function Card({ formData, isFlipped }: CardProps) {
-  function formatCardNumber(number: string): string {
-    return number.replace(/(\d{4})(?=\d)/g, '$1 ')
-  }
-
-  function removeCentury(year: string): string {
-    return year.slice(2)
-  }
-
   let expiryDate = 'MM/YY'
   if (formData.cardMonth && formData.cardYear) {
     expiryDate = `${formData.cardMonth}/${removeCentury(formData.cardYear)}`
