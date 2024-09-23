@@ -65,3 +65,26 @@ export function expirationDateCheck(month: string, year: string): boolean {
 
   return true
 }
+
+// Assignment 1.
+export function removeConsecutiveFours(string: string): string {
+  const stringToLowerCase = string.toLowerCase()
+  let result = ''
+  let lastChar = ''
+  let count = 0
+
+  for (const character of stringToLowerCase) {
+    if (character === lastChar) {
+      count++
+    } else {
+      lastChar = character
+      count = 1
+    }
+
+    if (count <= 3) {
+      result += character
+    }
+  }
+
+  return result
+}
