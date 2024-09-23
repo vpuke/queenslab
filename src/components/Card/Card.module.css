@@ -78,7 +78,7 @@
   justify-content: flex-end;
   p:first-child {
     font-size: 14px;
-    color: grey;
+    color: rgba(255, 255, 255, 0.8);
   }
   p {
     margin: 0;
