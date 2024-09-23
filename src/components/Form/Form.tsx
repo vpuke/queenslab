@@ -3,11 +3,17 @@ import styles from './Form.module.css'
 import { FormProps } from './interace'
 import Input from '../Input/Input'
 import Select from '../Select/Select'
-import { formatCardNumber, monthOptions, yearOptions } from '../../utils'
+import {
+  formatCardNumber,
+  formSchema,
+  monthOptions,
+  yearOptions,
+} from '../../utils'
 
 export function Form({
   onSubmit,
   errors,
+  setErrors,
   formData,
   setFormData,
   setIsFlipped,
@@ -26,6 +32,57 @@ export function Form({
       ...prevData,
       [name]: value,
     }))
+  }
+
+  //(╯°□°)╯︵ ┻━┻
+  function handleBlur(
+    e: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLSelectElement>
+  ) {
+    const { name, value } = e.target
+
+    const dataToValidate = {
+      ...formData,
+      [name]: value,
+    }
+    if (name === 'cardMonth' || name === 'cardYear') {
+      const result = formSchema.safeParse(dataToValidate)
+
+      const error = result.error?.errors.find(
+        (err) => err.path.includes('cardMonth') && err.path.includes('cardYear')
+      )
+
+      if (error) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          cardMonth: error.path.includes('cardMonth') ? error.message : '',
+          cardYear:
+            error.path.includes('cardYear') && error.message !== 'Expired card'
+              ? error.message
+              : '',
+        }))
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          cardMonth: undefined,
+          cardYear: undefined,
+        }))
+      }
+    } else {
+      const result = formSchema.safeParse(dataToValidate)
+      const error = result.error?.errors.find((err) => err.path[0] === name)
+
+      if (error) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: error.message,
+        }))
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: undefined,
+        }))
+      }
+    }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -51,6 +108,7 @@ export function Form({
         value={cardNumberValue}
         onChange={handleInputChange}
         error={errors.cardNumber}
+        handleBlur={handleBlur}
       />
       <Input
         label='Card Name'
@@ -58,6 +116,7 @@ export function Form({
         value={formData.cardName}
         onChange={handleInputChange}
         error={errors.cardName}
+        handleBlur={handleBlur}
       />
 
       <div className={styles.columns}>
@@ -70,6 +129,7 @@ export function Form({
             onChange={handleInputChange}
             options={monthOptions}
             error={errors.cardMonth}
+            handleBlur={handleBlur}
           />
           <Select
             label='Expiration Year'
@@ -80,6 +140,7 @@ export function Form({
             onChange={handleInputChange}
             options={yearOptions}
             error={errors.cardYear}
+            handleBlur={handleBlur}
           />
         </div>
         <Input
@@ -90,6 +151,7 @@ export function Form({
           error={errors.cardCVV}
           handleBlurCVV={handleBlurCVV}
           handleFocusCVV={handleFocusCVV}
+          handleBlur={handleBlur}
         />
       </div>
       <button data-cy='submit' type='submit' className={styles.submitButton}>

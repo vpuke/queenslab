@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 export interface FormProps {
   onSubmit: (data: {
     cardNumber: string
@@ -7,6 +9,7 @@ export interface FormProps {
     cardCVV: string
   }) => void
   errors: Record<string, string | undefined>
+  setErrors: Dispatch<SetStateAction<Record<string, string | undefined>>>
   formData: {
     cardNumber: string
     cardName: string

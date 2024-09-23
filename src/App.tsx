@@ -43,6 +43,7 @@ export function App() {
       <Form
         onSubmit={handleFormSubmit}
         errors={formErrors}
+        setErrors={setFormErrors}
         formData={formData}
         setFormData={setFormData}
         setIsFlipped={setIsFlipped}
