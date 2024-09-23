@@ -6,7 +6,7 @@ describe('E2E test that tests the form with correct data', () => {
       .invoke('attr', 'class')
       .should('not.contain', 'flipped')
     cy.wait(500)
-    cy.get('[data-cy=input-cardNumber]').type('4111111111111111')
+    cy.get('[data-cy=input-cardNumber]').type('4111 1111 1111 1111')
     cy.wait(500)
     cy.get('[data-cy=input-cardName]').type('Viktor Puke')
     cy.wait(500)
