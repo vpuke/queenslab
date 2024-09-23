@@ -27,12 +27,12 @@ export function App() {
         errors[err.path[0]] = err.message
       })
       setFormErrors(errors)
-      toast.error('Submition failed, try again')
+      toast.error('Submission failed, try again')
       console.log('errors', errors)
     } else {
       setFormErrors({})
       setFormData(result.data)
-      toast.success('Submition successful!')
+      toast.success('Submission successful!')
       console.log(result.data)
     }
   }
