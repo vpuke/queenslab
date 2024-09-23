@@ -12,7 +12,8 @@ export function Card({ formData, isFlipped }: CardProps) {
   } else if (!formData.cardMonth && formData.cardYear) {
     expiryDate = `MM/${removeCentury(formData.cardYear)}`
   }
-  const cardNumber = formData.cardNumber
+
+  const cardNumber = formData.cardNumber.replace(/[a-zA-Z]/g, '#')
 
   return (
     <div
@@ -24,7 +25,7 @@ export function Card({ formData, isFlipped }: CardProps) {
         <div className={styles.chip} />
         <div className={styles.cardNumber}>
           {formData.cardNumber
-            ? formatCardNumber(formData.cardNumber)
+            ? formatCardNumber(cardNumber)
             : '#### #### #### ####'}
         </div>
         <div className={styles.cardDetails}>
