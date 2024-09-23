@@ -11,6 +11,7 @@ function Select({
   error,
   displayLabel = true,
   defaultValue,
+  handleBlur,
 }: SelectProps) {
   return (
     <div className={`${styles.inputContainer} ${selectStyle.select}`}>
@@ -26,6 +27,7 @@ function Select({
         value={value}
         data-cy={`select-${name}`}
         onChange={onChange}
+        onBlur={handleBlur}
       >
         <option value='' disabled hidden>
           {defaultValue}

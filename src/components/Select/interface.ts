@@ -1,3 +1,5 @@
+import { FocusEventHandler } from 'react'
+
 interface Option {
   value: string
   label: string
@@ -12,4 +14,5 @@ export interface SelectProps {
   error: string | undefined
   displayLabel?: boolean
   defaultValue: string
+  handleBlur: FocusEventHandler<HTMLSelectElement> | undefined
 }

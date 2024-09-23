@@ -9,6 +9,7 @@ function Input({
   error,
   handleBlurCVV,
   handleFocusCVV,
+  handleBlur,
 }: InputProps) {
   return (
     <div className={styles.inputContainer}>
@@ -23,7 +24,12 @@ function Input({
         type='text'
         value={value}
         onChange={onChange}
-        onBlur={handleBlurCVV}
+        onBlur={(e) => {
+          if (name === 'cardCVV' && handleBlurCVV) {
+            handleBlurCVV(e)
+          }
+          handleBlur?.(e)
+        }}
         onFocus={handleFocusCVV}
       />
       <div className={styles.errorContainer}>

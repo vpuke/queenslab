@@ -8,4 +8,5 @@ export interface InputProps {
   error: string | undefined
   handleBlurCVV?: FocusEventHandler<HTMLInputElement> | undefined
   handleFocusCVV?: () => void
+  handleBlur: FocusEventHandler<HTMLInputElement> | undefined
 }
