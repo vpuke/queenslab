@@ -1,6 +1,4 @@
-<a href="https://giphy.com/gifs/l0MYt5jPR6QX5pnqM">
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="My Giphy" style="width: 100%; height: auto;" />
-</a>
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="100%">
 
 # Queenslab assignment
 
