@@ -1,8 +1,16 @@
 .container {
-  min-width: 520px;
+  min-width: 550px;
   border-radius: 20px;
   background: white;
   padding: 200px 20px 20px 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    min-width: 320px;
+    padding: 170px 20px 20px 20px;
+  }
 }
