@@ -8,6 +8,7 @@ describe('Form component', () => {
   const mockSubmit = vi.fn()
   const mockSetFormData = vi.fn()
   const mockSetIsFlipped = vi.fn()
+  const mockSetErrors = vi.fn()
 
   const initialData = {
     cardNumber: '',
@@ -24,6 +25,7 @@ describe('Form component', () => {
       <Form
         onSubmit={mockSubmit}
         errors={initialErrors}
+        setErrors={mockSetErrors}
         formData={initialData}
         setFormData={mockSetFormData}
         setIsFlipped={mockSetIsFlipped}
@@ -42,6 +44,7 @@ describe('Form component', () => {
       <Form
         onSubmit={mockSubmit}
         errors={initialErrors}
+        setErrors={mockSetErrors}
         formData={initialData}
         setFormData={mockSetFormData}
         setIsFlipped={mockSetIsFlipped}
@@ -82,6 +85,7 @@ describe('Form component', () => {
         formData={initialData}
         setFormData={mockSetFormData}
         setIsFlipped={mockSetIsFlipped}
+        setErrors={mockSetErrors}
       />
     )
 
@@ -101,6 +105,7 @@ describe('Form component', () => {
       <Form
         onSubmit={mockSubmit}
         errors={validationErrors}
+        setErrors={mockSetErrors}
         formData={initialData}
         setFormData={mockSetFormData}
         setIsFlipped={mockSetIsFlipped}
@@ -116,6 +121,7 @@ describe('Form component', () => {
       <Form
         onSubmit={mockSubmit}
         errors={initialErrors}
+        setErrors={mockSetErrors}
         formData={initialData}
         setFormData={mockSetFormData}
         setIsFlipped={mockSetIsFlipped}
