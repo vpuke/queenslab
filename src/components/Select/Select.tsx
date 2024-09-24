@@ -1,52 +1,44 @@
-import { SelectProps } from './interface'
 import styles from '../../index.module.css'
-import selectStyle from './Select.module.css'
-
-function Select({
+import { SelectProps } from './interface'
+export function Select({
   label,
   name,
-  value,
-  options,
-  onChange,
+  register,
   error,
-  displayLabel = true,
+  options,
   defaultValue,
-  handleBlur,
+  handleOnBlur,
 }: SelectProps) {
   return (
-    <div className={`${styles.inputContainer} ${selectStyle.select}`}>
-      {label && displayLabel && (
-        <label htmlFor={name} className={styles.label}>
-          {label}
-        </label>
-      )}
+    <div className={`${styles.inputContainer} ${styles.select}`}>
+      <label htmlFor='cardMonth' className={styles.label}>
+        {label}
+      </label>
       <select
-        className={`${styles.input} ${selectStyle.customSelect}`}
-        id={name}
-        name={name}
-        value={value}
+        className={`${styles.input} ${styles.customSelect}`}
         data-cy={`select-${name}`}
-        onChange={onChange}
-        onBlur={handleBlur}
+        {...register(name, {
+          onBlur: handleOnBlur,
+        })}
       >
         <option value='' disabled hidden>
           {defaultValue}
         </option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {options.map((option) => {
+          return (
+            <option value={option.value} key={option.value}>
+              {option.text}
+            </option>
+          )
+        })}
       </select>
       <div className={styles.errorContainer}>
         {error && (
           <p data-cy={`error-${name}`} className={styles.error}>
-            {error}
+            {error.message}
           </p>
         )}
       </div>
     </div>
   )
 }
-
-export default Select

@@ -4,38 +4,35 @@ import styles from '../../index.module.css'
 function Input({
   label,
   name,
-  value,
-  onChange,
+  type,
+  register,
   error,
-  handleBlurCVV,
-  handleFocusCVV,
   handleBlur,
+  handleFocus,
+  handleOnChange,
+  maxLength,
 }: InputProps) {
   return (
     <div className={styles.inputContainer}>
-      <label htmlFor={name} className={styles.label}>
+      <label htmlFor='cardNumber' className={styles.label}>
         {label}
       </label>
       <input
-        className={styles.input}
         id={name}
         data-cy={`input-${name}`}
-        name={name}
-        type='text'
-        value={value}
-        onChange={onChange}
-        onBlur={(e) => {
-          if (name === 'cardCVV' && handleBlurCVV) {
-            handleBlurCVV(e)
-          }
-          handleBlur?.(e)
-        }}
-        onFocus={handleFocusCVV}
+        type={type}
+        onFocus={handleFocus}
+        maxLength={maxLength}
+        className={styles.input}
+        {...register(name, {
+          onBlur: handleBlur,
+          onChange: handleOnChange,
+        })}
       />
       <div className={styles.errorContainer}>
         {error && (
           <p data-cy={`error-${name}`} className={styles.error}>
-            {error}
+            {error.message}
           </p>
         )}
       </div>

@@ -10,6 +10,8 @@
   padding: 12px;
   border: 1px solid gray;
   border-radius: 6px;
+  background-color: white;
+  color: black;
 }
 
 .errorContainer {
@@ -23,4 +25,52 @@
 
 .label {
   font-size: 14px;
+  color: black;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.columns {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+  }
+}
+
+.submitButton {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  background: black;
+  cursor: pointer;
+  width: 100%;
+}
+
+.date {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.customSelect {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url('./assets/arrow-down.png'); /* Your arrow icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.select {
+  width: 100%;
 }

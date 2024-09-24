@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { Option } from '../components/Select/interface'
 
 export const formSchema = z
   .object({
@@ -25,7 +26,7 @@ export const formSchema = z
   })
   .refine((data) => expirationDateCheck(data.cardMonth, data.cardYear), {
     message: 'Expired card',
-    path: ['cardMonth', 'cardYear'],
+    path: ['cardMonth'],
   })
 
 export function luhnCheck(cardNumber: string): boolean {
@@ -53,8 +54,8 @@ export function luhnCheck(cardNumber: string): boolean {
 export function expirationDateCheck(month: string, year: string): boolean {
   const currentYear = new Date().getFullYear()
   const currentMonth = new Date().getMonth() + 1
-  const inputYear = parseInt(year)
-  const inputMonth = parseInt(month)
+  const inputYear = parseInt(year, 10)
+  const inputMonth = parseInt(month, 10)
 
   if (inputYear < currentYear) return false
   if (inputMonth < 1 || inputMonth > 12) return false
@@ -67,19 +68,32 @@ export function formatCardNumber(number: string): string {
   return number.replace(/(\d{4})(?=\d)/g, '$1 ')
 }
 
-export const monthOptions = [...Array(12).keys()].map((month) => ({
-  value: (month + 1).toString().padStart(2, '0'),
-  label: (month + 1).toString().padStart(2, '0'),
-}))
-
-export const yearOptions = [2024, 2025, 2026, 2027].map((year) => ({
-  value: year.toString(),
-  label: year.toString(),
-}))
-
 export function removeCentury(year: string): string {
   return year.slice(2)
 }
+
+export const months: Option[] = [
+  { text: '01', value: '01' },
+  { text: '02', value: '02' },
+  { text: '03', value: '03' },
+  { text: '04', value: '04' },
+  { text: '05', value: '05' },
+  { text: '06', value: '06' },
+  { text: '07', value: '07' },
+  { text: '08', value: '08' },
+  { text: '09', value: '09' },
+  { text: '10', value: '10' },
+  { text: '11', value: '11' },
+  { text: '12', value: '12' },
+]
+
+export const years: Option[] = [
+  { text: '2024', value: '2024' },
+  { text: '2025', value: '2025' },
+  { text: '2026', value: '2026' },
+  { text: '2027', value: '2027' },
+  { text: '2028', value: '2028' },
+]
 
 // Assignment 1. Strings
 export function removeConsecutiveFours(string: string): string {

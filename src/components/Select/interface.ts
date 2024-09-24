@@ -1,18 +1,17 @@
+import { FieldError, UseFormRegister } from 'react-hook-form'
+import { Schema } from '../../App'
 import { FocusEventHandler } from 'react'
 
-interface Option {
+export interface Option {
+  text: string
   value: string
-  label: string
 }
-
 export interface SelectProps {
-  label?: string
-  name: string
-  value: string
+  label: string
+  name: 'cardMonth' | 'cardYear'
+  register: UseFormRegister<Schema>
+  error: FieldError | undefined
   options: Option[]
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
-  error: string | undefined
-  displayLabel?: boolean
   defaultValue: string
-  handleBlur: FocusEventHandler<HTMLSelectElement> | undefined
+  handleOnBlur?: FocusEventHandler<HTMLSelectElement> | undefined
 }
