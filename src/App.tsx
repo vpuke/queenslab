@@ -48,7 +48,6 @@ export function App() {
       duration: 6000,
     })
   }
-
   const [cardNumber, cardName, cardMonth, cardYear, cardCVV] = watch([
     'cardNumber',
     'cardName',
