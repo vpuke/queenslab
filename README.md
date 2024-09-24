@@ -2,6 +2,14 @@
 
 # Queenslab assignment
 
+## An alternative
+
+I took the liberty of creating a cleaner version with the same functionality here, using react-hook-form.
+
+[With react-hook-form branch](https://github.com/vpuke/queenslab/tree/with-react-hook-form)
+<br/>
+[With reach-hook-form live site](https://queenslab-react-hook-form.vercel.app/)
+
 ## Overview
 
 An assigment demonstrating card validation using Zod, unit testing with Vitest, and E2E testing with Cypress.
