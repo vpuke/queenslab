@@ -119,50 +119,21 @@ export function removeConsecutiveFours(string: string): string {
 }
 
 // Assignment 2. Arrays
-export function maxSumOfTwoNumbersThatHaveOddSum(arr: number[]): number {
-  const digitSum = (num: number): number => {
-    let sum = 0
-    num = Math.abs(num)
-    while (num > 0) {
-      sum += num % 10
-      num = Math.floor(num / 10)
-    }
-    return sum
-  }
-
-  let maxEven1 = -1,
-    maxEven2 = -1
-  let maxOdd1 = -1,
-    maxOdd2 = -1
-
-  for (const num of arr) {
-    const sumDigits = digitSum(num)
-
-    if (sumDigits % 2 === 0) {
-      if (num > maxEven1) {
-        maxEven2 = maxEven1
-        maxEven1 = num
-      } else if (num > maxEven2) {
-        maxEven2 = num
-      }
-    } else {
-      if (num > maxOdd1) {
-        maxOdd2 = maxOdd1
-        maxOdd1 = num
-      } else if (num > maxOdd2) {
-        maxOdd2 = num
-      }
-    }
-  }
-
+export function maxSumOfTwoNumbersWithOddSum(arr: number[]): number {
   let maxSum = -1
 
-  if (maxEven2 !== -1) {
-    maxSum = maxEven1 + maxEven2
-  }
-  if (maxOdd2 !== -1) {
-    maxSum = Math.max(maxSum, maxOdd1 + maxOdd2)
-  }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      const currentSum = arr[i] + arr[j]
 
+      if (currentSum % 2 !== 0) {
+        maxSum = Math.max(maxSum, currentSum)
+      }
+    }
+  }
   return maxSum
 }
+
+// console.log(maxSumOfTwoNumbersWithOddSum([1, 2, 3, 4, 5, 6])) returns 11
+// console.log(maxSumOfTwoNumbersWithOddSum([19, 2, 42, 18])) returns 61
+// console.log(maxSumOfTwoNumbersWithOddSum([61, 32, 51])) returns 93
